@@ -11,14 +11,14 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
     // Get user data from local storage or default to dummy
     const user = JSON.parse(localStorage.getItem('user')) || {
         name: 'Arun Verma',
-        role: 'Super Admin',
+        role: 'School Administrator',
         avatar: 'https://i.pinimg.com/564x/7f/6c/64/7f6c64f2d6c4f7f1f8c6f5c2cda6a0c4.jpg'
     };
 
     const handleLogout = () => {
         localStorage.removeItem('isAuthenticated');
         localStorage.removeItem('user');
-        navigate('/admin/login');
+        window.location.href = '/admin/login';
     };
 
     return (
@@ -38,11 +38,11 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
 
                 <div className="hidden sm:block">
                     <div className="relative group">
-                        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-600 transition-colors" />
+                        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400 group-focus-within:text-sky-600 transition-colors" />
                         <input
                             type="text"
-                            placeholder="Search everything..."
-                            className="w-96 rounded-full border border-slate-200 bg-slate-50 py-3 pl-12 pr-6 text-base outline-none transition-all focus:border-indigo-600 focus:bg-white focus:ring-4 focus:ring-indigo-50 dark:border-slate-800 dark:bg-slate-800/50 dark:text-white dark:focus:border-indigo-500 dark:focus:ring-indigo-500/10 dark:focus:bg-slate-800"
+                            placeholder="Find students, teachers, or records..."
+                            className="w-96 rounded-full border border-slate-200 bg-slate-50 py-3 pl-12 pr-6 text-sm outline-none transition-all focus:border-sky-600 focus:bg-white focus:ring-4 focus:ring-sky-50 dark:border-slate-800 dark:bg-slate-800/50 dark:text-white dark:focus:border-sky-500 dark:focus:ring-sky-500/10 dark:focus:bg-slate-800"
                         />
                     </div>
                 </div>
@@ -52,22 +52,22 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                         {/* Theme Toggler */}
                         <button
                             onClick={() => setColorMode(colorMode === 'light' ? 'dark' : 'light')}
-                            className="flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all"
+                            className="flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-sky-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all font-bold"
                         >
                             {colorMode === 'dark' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
                         </button>
 
                         {/* Notifications */}
-                        <button className="relative flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all">
+                        <button className="relative flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-sky-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all">
                             <Bell className="h-6 w-6" />
                             <span className="absolute top-2.5 right-2.5 flex h-2.5 w-2.5">
-                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-indigo-400 opacity-75"></span>
-                                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-indigo-500 ring-2 ring-white dark:ring-slate-900"></span>
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-sky-500 ring-2 ring-white dark:ring-slate-900"></span>
                             </span>
                         </button>
 
                         {/* Messages */}
-                        <button className="flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all">
+                        <button className="flex h-11 w-11 items-center justify-center rounded-full text-slate-500 hover:bg-slate-50 hover:text-sky-600 dark:text-slate-400 dark:hover:bg-slate-800 transition-all font-bold">
                             <MessageSquare className="h-6 w-6" />
                         </button>
                     </div>
@@ -78,18 +78,18 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                             className="hidden text-right lg:block cursor-pointer"
                         >
-                            <p className="text-base font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 transition-colors">{user.name}</p>
-                            <p className="text-xs font-medium text-slate-500">{user.role}</p>
+                            <p className="text-sm font-extrabold text-slate-900 dark:text-white group-hover:text-sky-600 transition-colors uppercase tracking-tight">{user.name}</p>
+                            <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">{user.role}</p>
                         </div>
 
                         <div className="relative">
                             <div
                                 onClick={() => navigate('/admin/profile')}
-                                className="h-12 w-12 rounded-full bg-indigo-100 overflow-hidden border-2 border-white shadow-md ring-1 ring-slate-200 hover:ring-indigo-300 dark:ring-slate-700 dark:border-slate-800 transition-all cursor-pointer"
+                                className="h-11 w-11 rounded-xl bg-sky-100 overflow-hidden border-2 border-white shadow-lg ring-1 ring-slate-200 hover:ring-sky-300 dark:ring-slate-700 dark:border-slate-800 transition-all cursor-pointer"
                             >
                                 <img src={user.avatar} alt="User" className="h-full w-full object-cover" />
                             </div>
-                            <div className="absolute bottom-0 right-0 h-4 w-4 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900 pointer-events-none"></div>
+                            <div className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-500 dark:border-slate-900 pointer-events-none"></div>
                         </div>
 
                         <ChevronDown
@@ -112,8 +112,8 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
 
                                     {/* Dropdown Header */}
                                     <div className="flex items-center gap-3 px-4 py-4 border-b border-slate-100 dark:border-slate-800 mb-2 relative z-10 bg-white dark:bg-slate-900 rounded-t-2xl">
-                                        <div className="h-10 w-10 rounded-xl bg-indigo-50 flex items-center justify-center dark:bg-indigo-900/30">
-                                            <User className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
+                                        <div className="h-10 w-10 rounded-xl bg-sky-50 flex items-center justify-center dark:bg-sky-900/30">
+                                            <User className="h-6 w-6 text-sky-600 dark:text-sky-400" />
                                         </div>
                                         <div className="overflow-hidden">
                                             <p className="text-sm font-bold text-slate-900 dark:text-white truncate">{user.name}</p>
@@ -126,9 +126,9 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                                         <li>
                                             <button
                                                 onClick={() => { navigate('/admin/profile'); setDropdownOpen(false); }}
-                                                className="flex w-full items-center gap-3.5 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400 transition-all rounded-xl group"
+                                                className="flex w-full items-center gap-3.5 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-sky-50 hover:text-sky-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-sky-400 transition-all rounded-xl group"
                                             >
-                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/40 transition-colors">
+                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-50 dark:bg-slate-800 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/40 transition-colors font-bold">
                                                     <User className="h-4.5 w-4.5" />
                                                 </div>
                                                 Personal Info
@@ -137,9 +137,9 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                                         <li>
                                             <button
                                                 onClick={() => { navigate('/admin/settings'); setDropdownOpen(false); }}
-                                                className="flex w-full items-center gap-3.5 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-slate-50 hover:text-indigo-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-indigo-400 transition-all rounded-xl group"
+                                                className="flex w-full items-center gap-3.5 px-4 py-3 text-sm font-semibold text-slate-600 hover:bg-sky-50 hover:text-sky-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-sky-400 transition-all rounded-xl group"
                                             >
-                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 group-hover:bg-indigo-50 dark:group-hover:bg-indigo-900/40 transition-colors">
+                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-50 dark:bg-slate-800 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/40 transition-colors font-bold">
                                                     <Settings className="h-4.5 w-4.5" />
                                                 </div>
                                                 Account Settings
@@ -151,7 +151,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }) => {
                                                 onClick={handleLogout}
                                                 className="flex w-full items-center gap-3.5 px-4 py-3 text-sm font-bold text-red-500 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-900/20 transition-all rounded-xl group"
                                             >
-                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 dark:bg-red-900/20 group-hover:bg-red-100 dark:group-hover:bg-red-900/40 transition-colors">
+                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 dark:bg-red-900/20 group-hover:bg-red-100 dark:group-hover:bg-red-900/40 transition-colors font-bold">
                                                     <LogOut className="h-4.5 w-4.5" />
                                                 </div>
                                                 Log Out

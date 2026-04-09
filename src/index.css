@@ -3,19 +3,20 @@
 @variant dark (&:where(.dark, .dark *));
 
 :root {
-  font-family: 'Satoshi', sans-serif;
+  font-family: 'Outfit', 'Satoshi', sans-serif;
 }
 
 @theme {
-  --color-boxdark: #24303F;
-  --color-boxdark-2: #1A222C;
+  --color-boxdark: #001a33;
+  --color-boxdark-2: #001226;
   --color-bodydark: #AEB7C0;
   --color-bodydark1: #DEE4EE;
   --color-bodydark2: #8A99AF;
-  --color-primary: #3C50E0;
-  --color-secondary: #80CAEE;
+  --color-primary: #0099CC;
+  --color-secondary: #FFCC00;
+  --color-accent: #E5E4E2;
   --color-stroke: #E2E8F0;
-  --color-strokedark: #2E3A47;
+  --color-strokedark: #1A222C;
   --color-meta-2: #EFF2F7;
   --color-meta-4: #313D4A;
 }
